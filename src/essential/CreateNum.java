@@ -10,7 +10,7 @@ public class CreateNum {
         //  hashSet 을 이용해 중복 자동 배제 및 숫자 선정
         Set<String> numberSet = new HashSet<>();
         while (numberSet.size() < 3) {
-            String num = (int) (Math.random() * 10) + "";
+            String num = (int) (Math.random() * 9 + 1) + "";
             numberSet.add(num);
         }
 

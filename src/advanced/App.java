@@ -12,11 +12,17 @@ public class App {
         Confirm confirm = new Confirm();
         List<Integer> games = new ArrayList<>();
 
+        //  자리수 입력 여부 저장 변수
+        boolean isInputLevel = false;
+
+        //  난이도
         int level = 3;
+
         label:
         while (true) {
             String gameType = "";
-            while (true) {
+            //  gameType 입력 (자리수 설정이 됐을 경우 패스)
+            while (!isInputLevel) {
                 System.out.println("환영합니다! 원하시는 번호를 입력해주세요");
                 System.out.println("0. 자리수 설정 1. 게임 시작하기 2. 게임 기록 보기 3. 종료하기");
                 gameType = input.stringInput();
@@ -28,6 +34,10 @@ public class App {
                 }
             }
 
+            //  자리수 입력 시 바로 시작
+            if (isInputLevel) {
+                gameType = "1";
+            }
 
             switch (gameType) {
                 case "1":
@@ -40,6 +50,7 @@ public class App {
                     game.player(number, level);
 
                     games.add(game.getCount());
+                    isInputLevel = false;
                     break;
                 case "2":
                     for (int i = 0; i < games.size(); i++) {
@@ -53,6 +64,7 @@ public class App {
                         try {
                             confirm.isValidLevel(in);
                             level = Integer.parseInt(in);
+                            isInputLevel = true;
                             break;
                         } catch (InputMismatchException e) {
                             System.out.println("올바르지 않은 입력값입니다.");

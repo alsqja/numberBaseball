@@ -1,5 +1,7 @@
 package essential;
 
+import java.util.InputMismatchException;
+
 public class Game {
     private int count = 0;
 
@@ -24,9 +26,16 @@ public class Game {
 
     public void player(String number) {
         Input input = new Input();
+        Confirm confirm = new Confirm();
         while (true) {
             System.out.print("숫자를 입력하세요: ");
             String inputAnswer = input.answerInput();
+            try {
+                confirm.isValidNumber(inputAnswer);
+            } catch (InputMismatchException e) {
+                System.out.println("올바르지 않은 입력값입니다.");
+                continue;
+            }
             this.count++;
             int[] result = {0, 0};
             try {

@@ -23,9 +23,8 @@ public class App {
                 }
             }
 
-            System.out.println(gameType);
-
             if (gameType.equals("1")) {
+                System.out.println("< 게임을 시작합니다 >");
                 CreateNum createNum = new CreateNum();
                 String number = createNum.getNumber();
                 Game game = new Game();

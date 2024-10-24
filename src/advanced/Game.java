@@ -47,12 +47,17 @@ public class Game {
             //  입력된 숫자 문제 없을 시 입력횟수 추가
             this.count += 1;
 
-            int[] result = {0, 0};
+            int[] result;
 
             try {
                 //  strike, ball 을 담을 result에 checkAnswer로 결과값 대입
                 result = checkAnswer(inputAnswer, number);
-                System.out.println(result[0] + "S " + result[1] + "B");
+
+                if (result[0] == 0 && result[1] == 0) {
+                    System.out.println("아웃");
+                } else {
+                    System.out.println(result[0] + "S " + result[1] + "B");
+                }
             } catch (Exception e) {
                 //  정답인 경우 throw 를 catch
                 System.out.println("정답");

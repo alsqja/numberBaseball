@@ -37,10 +37,16 @@ public class Game {
                 continue;
             }
             this.count++;
+
             int[] result = {0, 0};
+            
             try {
                 result = checkAnswer(inputAnswer, number);
-                System.out.println(result[0] + "S " + result[1] + "B");
+                if (result[0] == 0 && result[1] == 0) {
+                    System.out.println("아웃");
+                } else {
+                    System.out.println(result[0] + "S " + result[1] + "B");
+                }
             } catch (Exception e) {
                 System.out.println("정답");
                 break;

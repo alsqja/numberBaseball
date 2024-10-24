@@ -1,11 +1,9 @@
 package essential;
 
 import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         String gameType = "";
         Input input = new Input();
         Confirm confirm = new Confirm();
@@ -28,8 +26,9 @@ public class App {
                 CreateNum createNum = new CreateNum();
                 String number = createNum.getNumber();
                 Game game = new Game();
+                System.out.println(number);
                 game.player(number);
-                System.out.println(game.getCount());
+                System.out.println(game.getCount() + " 번 만에 맞추셨어요!! 혹시... 천재?");
             } else if (gameType.equals("2")) {
                 System.out.println("구현되지 않은 기능입니다.");
             } else {

@@ -39,7 +39,7 @@ public class Game {
             this.count++;
 
             int[] result = {0, 0};
-            
+
             try {
                 result = checkAnswer(inputAnswer, number);
                 if (result[0] == 0 && result[1] == 0) {
@@ -48,7 +48,7 @@ public class Game {
                     System.out.println(result[0] + "S " + result[1] + "B");
                 }
             } catch (Exception e) {
-                System.out.println("정답");
+                System.out.println("정답입니다~~~~!! :)");
                 break;
             }
         }

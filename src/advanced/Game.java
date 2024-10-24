@@ -45,7 +45,7 @@ public class Game {
                 continue;
             }
             //  입력된 숫자 문제 없을 시 입력횟수 추가
-            this.count += 1;
+            this.count++;
 
             int[] result;
 

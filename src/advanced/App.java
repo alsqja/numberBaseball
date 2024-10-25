@@ -7,7 +7,7 @@ import java.util.List;
 public class App {
     public static void main(String[] args) {
         Input input = new Input();
-        Confirm confirm = new Confirm();
+        Validation validation = new Validation();
 
         //  매 게임 별 count 저장 List
         List<Integer> games = new ArrayList<>();
@@ -22,15 +22,15 @@ public class App {
         while (true) {
             String gameType = "";
             //  gameType 입력 (자리수 설정이 됐을 경우 패스)
-            while (!isInputLevel) {
+            if (!isInputLevel) {
                 System.out.println("환영합니다! 원하시는 번호를 입력해주세요");
                 System.out.println("0. 자리수 설정 1. 게임 시작하기 2. 게임 기록 보기 3. 종료하기");
                 gameType = input.stringInput();
                 try {
-                    confirm.isGameType(gameType);
-                    break;
+                    validation.isGameType(gameType);
                 } catch (InputMismatchException e) {
                     System.out.println("올바르지 않은 입력값입니다.");
+                    continue;
                 }
             }
 
@@ -42,14 +42,9 @@ public class App {
             switch (gameType) {
                 case "1":
                     System.out.println("< 게임을 시작합니다 >");
-
-                    //  level 자리수에 맞는 난수 생성
-                    CreateNum createNum = new CreateNum(level);
-                    String number = createNum.getNumber();
-
                     //  게임 진행
-                    Game game = new Game();
-                    game.player(number, level);
+                    Game game = new Game(level);
+                    game.player(level);
 
                     games.add(game.getCount());
 
@@ -67,7 +62,7 @@ public class App {
                         String in = input.stringInput();
                         try {
                             //  input값 유효성 확인
-                            confirm.isValidLevel(in);
+                            validation.isValidLevel(in);
 
                             level = Integer.parseInt(in);
 

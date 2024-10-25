@@ -5,7 +5,7 @@ import java.util.InputMismatchException;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-public class Confirm {
+public class Validation {
     private static final String TYPE_NUMBER_REG = "^[0-3]*$";
     private static final String NUMBER_REG = "^[1-9]*$";
     private static final String LEVEL_NUMBER_REG = "^[3-5]*$";
@@ -43,7 +43,7 @@ public class Confirm {
         if (!Pattern.matches(LEVEL_NUMBER_REG, input)) {
             throw new InputMismatchException();
         }
-        
+
         int level = Integer.parseInt(input);
         //  난이도의 범위가 맞지 않는 경우
         if (level > 5 || level < 3) {
